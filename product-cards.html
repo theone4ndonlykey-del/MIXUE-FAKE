@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Produk Kami</title>
+<style>
+:root{
+  --bg:#ffffff; --card:#f8f9fc; --text:#111111; --muted:#444444; --red:#d62d27;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){--bg:#141414;--card:#1e1e22;--text:#f4f4f4;--muted:#bbbbbb;}
+}
+:root[data-theme="dark"]{--bg:#141414;--card:#1e1e22;--text:#f4f4f4;--muted:#bbbbbb;}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Georgia,"Times New Roman",serif}
+.wrap{max-width:960px;margin:0 auto;padding:48px 20px 64px}
+h1{text-align:center;font-family:Arial,Helvetica,sans-serif;font-size:clamp(32px,6vw,52px);margin:0 0 40px}
+
+/* Container: flex column, produk berjajar ke bawah */
+.list{display:flex;flex-direction:column;gap:28px}
+
+.card{
+  position:relative;overflow:hidden;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  background:var(--card);border-radius:28px;
+  padding:32px 40px;min-height:300px;
+}
+.info{flex:1 1 50%;position:relative;z-index:2}
+.info h2{margin:0 0 20px;color:var(--red);font-size:clamp(24px,4vw,34px);line-height:1.2}
+.info p{margin:0;color:var(--muted);font-size:18px}
+
+/* Panel merah muncul dari bawah card saat hover */
+.card::before{
+  content:"";position:absolute;right:0;bottom:0;
+  width:45%;height:100%;
+  background:var(--red);
+  border-top-left-radius:200px;
+  transform:translateY(100%);
+  transition:transform .5s cubic-bezier(.22,.8,.3,1);
+  z-index:0;
+}
+.card:hover::before{transform:translateY(0)}
+
+/* Gambar produk: membesar saat hover */
+.pic{
+  position:relative;z-index:1;flex:0 0 220px;
+  display:flex;justify-content:center;
+}
+.pic svg,.pic img{
+  width:100%;max-width:200px;height:auto;display:block;
+  transition:transform .45s cubic-bezier(.22,.8,.3,1);
+  filter:drop-shadow(0 12px 14px rgba(0,0,0,.25));
+}
+.card:hover .pic svg,.card:hover .pic img{transform:scale(1.12) translateY(-6px)}
+
+@media (max-width:640px){
+  .card{flex-direction:column-reverse;text-align:center;padding:28px 20px}
+  .card::before{width:100%;border-top-left-radius:160px}
+  .pic{flex-basis:auto;width:60%}
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <h1>Produk Kami</h1>
+
+  <!-- Ganti isi .pic dengan <img src="foto-produk.png" alt="Nama produk"> -->
+  <section class="list">
+
+    <article class="card">
+      <div class="info">
+        <h2>Brown Sugar Pearl<br>Milk Tea</h2>
+        <p>Boba kenyal dengan gula aren yang lembut!</p>
+      </div>
+      <div class="pic">
+        <svg viewBox="0 0 120 220" role="img" aria-label="Gelas minuman">
+          <ellipse cx="60" cy="40" rx="48" ry="14" fill="#3b2418"/>
+          <circle cx="35" cy="30" r="8" fill="#2a1710"/><circle cx="55" cy="26" r="8" fill="#2a1710"/>
+          <circle cx="76" cy="30" r="8" fill="#2a1710"/><circle cx="90" cy="38" r="7" fill="#2a1710"/>
+          <path d="M14 40 L26 205 Q60 218 94 205 L106 40 Z" fill="#c98a4b"/>
+          <path d="M20 90 Q60 70 100 100 L96 150 Q60 165 24 140 Z" fill="#8a4f24" opacity=".7"/>
+          <path d="M26 175 L94 175 L92 205 Q60 218 28 205 Z" fill="#3b2418"/>
+          <rect x="40" y="105" width="40" height="22" rx="6" fill="#fff" opacity=".85"/>
+        </svg>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="info">
+        <h2>Coconut Jelly<br>Milk Tea</h2>
+        <p>Jelly kelapa yang lembut, segar dan nikmat!</p>
+      </div>
+      <div class="pic">
+        <svg viewBox="0 0 120 220" role="img" aria-label="Gelas minuman">
+          <ellipse cx="60" cy="40" rx="48" ry="14" fill="#f3ead6"/>
+          <rect x="30" y="22" width="14" height="14" rx="3" fill="#fffaf0"/>
+          <rect x="52" y="16" width="14" height="14" rx="3" fill="#fffaf0"/>
+          <rect x="74" y="24" width="14" height="14" rx="3" fill="#fffaf0"/>
+          <path d="M14 40 L26 205 Q60 218 94 205 L106 40 Z" fill="#d9b985"/>
+          <rect x="40" y="105" width="40" height="22" rx="6" fill="#fff" opacity=".85"/>
+        </svg>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="info">
+        <h2>Strawberry<br>Milk Tea</h2>
+        <p>Perpaduan stroberi manis dan susu yang creamy!</p>
+      </div>
+      <div class="pic">
+        <svg viewBox="0 0 120 220" role="img" aria-label="Gelas minuman">
+          <ellipse cx="60" cy="40" rx="48" ry="14" fill="#f6b5c2"/>
+          <path d="M14 40 L26 205 Q60 218 94 205 L106 40 Z" fill="#f08aa0"/>
+          <path d="M20 120 Q60 100 100 125 L94 205 Q60 218 28 205 Z" fill="#e0526f" opacity=".6"/>
+          <rect x="40" y="105" width="40" height="22" rx="6" fill="#fff" opacity=".85"/>
+        </svg>
+      </div>
+    </article>
+
+  </section>
+</main>
+</body>
+</html>
